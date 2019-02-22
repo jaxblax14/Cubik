@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instruction: MyText
+  challenge: one
+  unit: one
+
+two:
+  instruction: MyText
+  challenge: two
+  unit: two

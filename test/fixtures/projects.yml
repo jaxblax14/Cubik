@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: one
+  project_state: one
+  challenge: one
+
+two:
+  unit: two
+  project_state: two
+  challenge: two

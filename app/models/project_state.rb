@@ -1,0 +1,2 @@
+class ProjectState < ApplicationRecord
+end

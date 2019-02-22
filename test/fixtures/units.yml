@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  index_order: 1
+  content: MyText
+  link_video: MyText
+
+two:
+  name: MyText
+  index_order: 1
+  content: MyText
+  link_video: MyText
