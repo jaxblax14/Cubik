@@ -1,28 +1,18 @@
 require 'test_helper'
 
 class UnitsControllerTest < ActionDispatch::IntegrationTest
-  test "should get unit_1" do
-    get units_unit_1_url
+  test "should get new" do
+    get units_new_url
     assert_response :success
   end
 
-  test "should get unit_2" do
-    get units_unit_2_url
+  test "should get index" do
+    get units_index_url
     assert_response :success
   end
 
-  test "should get unit_3" do
-    get units_unit_3_url
-    assert_response :success
-  end
-
-  test "should get unit_4" do
-    get units_unit_4_url
-    assert_response :success
-  end
-
-  test "should get unit_5" do
-    get units_unit_5_url
+  test "should get edit" do
+    get units_edit_url
     assert_response :success
   end
 

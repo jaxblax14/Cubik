@@ -1,0 +1,20 @@
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1> Etapas</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sequi dolore sed nisi sit unde nulla repellendus est eveniet? Autem quos quod nobis officia ducimus consequatur nulla repellat eius placeat.</p>
+    <%= link_to('Desafíos', challenge_index_path,:class => 'btn btn-primary') %> | <a>Etapas</a> |
+    <%= link_to('Nueva unidad', units_new_path,:class => 'btn btn-primary') %>
+  </div>
+</section>
+<br>
+  <div class="row">
+    <div class="col-xs-4">
+      <% @units.each do |unit| %>
+        <%= link_to(units_edit_path(unit),:class => 'btn btn-outline-primary') do %>
+          <div>
+            <h3> nombre unidad: <%= unit.name %></h3>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

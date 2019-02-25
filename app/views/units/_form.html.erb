@@ -1,0 +1,22 @@
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1>Creacion de Unidad</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quod, nobis nisi, itaque, aspernatur laboriosam.</p>
+  </div>
+</section>
+
+<section class= "Etapas  text-center">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <%= form_tag(@form_path) do %>
+      <div class="form-group">
+        <%= label_tag('unit[name]', 'Nombre') %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag('unit[name]', @units.name, :class =>"form-control") %>
+      </div>
+      <div class="actions">
+      <%= submit_tag('Guardar',:class => 'btn btn-outline-success') %>
+    <% end %>
+  </div>
+    
+</section>

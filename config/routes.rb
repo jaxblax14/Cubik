@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'units/unit_1'
-  get 'units/unit_2'
-  get 'units/unit_3'
-  get 'units/unit_4'
-  get 'units/unit_5'
   get 'challenge/index'
   get 'dashboard/index'
   get 'homepage/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homepage#index'
+  #Mantenedor de unidades
+  get 'units/index'
+  get 'units/new'
+  get 'units/edit/:unit_id' => 'units#edit', as: 'units_edit'
+  post 'units/create'
+  post 'units/update/:unit_id' => 'units#update', as: 'units_update'
 
   # Mantenedor de desafíos
   get 'challenge/new'
