@@ -16,8 +16,12 @@
     <% end -%>
       
       <div class="nav">
-        <a class="btn btn-outline-secondary btn-sm" href="#">Iniciar sesion</a>
-        <a class="btn btn-primary btn-sm" href="#">Registrarse</a>
+       <% if current_user.nil? %>
+          <a class="btn btn-primary btn-sm" href="<%=new_user_registration_path %>">Registrarse</a>
+          <a class="btn btn-outline-secondary btn-sm" href="<%=user_session_path %>">Iniciar sesion</a>
+        <% elsif current_user.present? %>
+          <a class="btn btn-outline-secondary btn-sm" href="<%= destroy_user_session_path %>" data-method="DELETE">Cerrar sesión</a>
+        <% end %>
       </div>
     </nav>
 
@@ -33,8 +37,8 @@
       <div class="wrapper">
         <%= yield %>
       </div>
-    </div>
-  </body>
+  </div>
+</body>
 </html>
 
 <script>

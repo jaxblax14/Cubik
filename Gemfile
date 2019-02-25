@@ -68,3 +68,5 @@ gem 'rollbar'
 gem 'bootstrap', '~> 4.2.1'
 # jQuery
 gem 'jquery-rails'
+# device
+gem 'devise'
