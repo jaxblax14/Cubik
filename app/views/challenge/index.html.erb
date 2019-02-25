@@ -1,2 +1,30 @@
-<h1>Challenge#index</h1>
-<p>Find me in app/views/challenge/index.html.erb</p>
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1>Desafíos</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quod, nobis nisi, itaque, aspernatur laboriosam.</p>
+    <%= link_to('Nuevo desafío', challenge_new_path,:class => 'btn btn-primary') %>
+  </div>
+</section>
+
+<section class="dashboard">
+  <section class="challenge">
+    <% if @challenge.any? %>
+      <h5 class="challenge-title"><i class="fa fa-folder-open"></i> Desafíos Atix Lab 2</h5>
+      <div class="row">
+        <% @challenge.each do |challenge| %>
+          <div class="col-4">
+            <%= link_to(challenge_edit_path(challenge)) do %>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= challenge.title %></h5>
+                  <p class="card-text"><%= challenge.description %></p>
+                  <button class="btn btn-primary">Editar desafío</button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</section>
