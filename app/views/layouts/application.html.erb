@@ -9,22 +9,45 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body>
-  <nav class="navbar navbar-light bg-light">
-  <div class="nav">
-    <% if current_user.nil? %>
-      <a class="btn btn-primary btn-sm" href="<%=new_user_registration_path %>">Registrarse</a>
-      <a class="btn btn-outline-secondary btn-sm" href="<%=user_session_path %>">Iniciar sesion</a>
-    <% elsif current_user.present? %>
-      <a class="btn btn-outline-secondary btn-sm" href="<%= destroy_user_session_path %>" data-method="DELETE">Cerrar sesión</a>
-    <% end %>
-   </div>
-  </nav>
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+    <%= link_to dashboard_index_path do %>
+      <%= image_tag "logo_atix.svg", :width => '110' %>
+    <% end -%>
+      
+      <div class="nav">
+       <% if current_user.nil? %>
+          <a class="btn btn-primary btn-sm" href="<%=new_user_registration_path %>">Registrarse</a>
+          <a class="btn btn-outline-secondary btn-sm" href="<%=user_session_path %>">Iniciar sesion</a>
+        <% elsif current_user.present? %>
+          <a class="btn btn-outline-secondary btn-sm" href="<%= destroy_user_session_path %>" data-method="DELETE">Cerrar sesión</a>
+        <% end %>
+      </div>
+    </nav>
 
-  <div class="container-fluid">
-    <div class="wrapper">
-      <%= yield %>
+    <div class="text-center">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
     </div>
+
+    <div class="container-fluid">
+      <div class="wrapper">
+        <%= yield %>
+      </div>
   </div>
 </body>
 </html>
+
+<script>
+$(document).ready (function(){
+  $("#success-alert").hide();
+  $("#myWish").click(function showAlert() {
+      $("#success-alert").alert();
+      window.setTimeout(function () { 
+                  $("#success-alert").alert('close'); }, 2000);               
+        });       
+          });
+</script>
