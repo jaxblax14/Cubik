@@ -11,9 +11,16 @@
 
   <body>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Navbar</a>
+      <a class="btn btn-outline-secondary btn-sm" href="#">Iniciar sesion</a>
+      <a class="btn btn-primary btn-sm" href="#">Registrarse</a>
+    </nav>
 
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
