@@ -11,10 +11,23 @@
 
   <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
-      <a class="navbar-brand">Navbar</a>
-      <a class="btn btn-outline-secondary btn-sm" href="#">Iniciar sesion</a>
-      <a class="btn btn-primary btn-sm" href="#">Registrarse</a>
+    <%= link_to dashboard_index_path do %>
+      <%= image_tag "logo_atix.svg", :width => '110' %>
+    <% end -%>
+      
+      <div class="nav">
+        <a class="btn btn-outline-secondary btn-sm" href="#">Iniciar sesion</a>
+        <a class="btn btn-primary btn-sm" href="#">Registrarse</a>
+      </div>
     </nav>
+
+    <div class="text-center">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
 
     <div class="container-fluid">
       <div class="wrapper">

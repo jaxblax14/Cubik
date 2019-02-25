@@ -1,5 +1,6 @@
 class ChallengeController < ApplicationController
-  
+  before_action(:set_challenge, only: [:edit, :update])
+
   def index
     @challenge = Challenge.all
   end
@@ -7,6 +8,11 @@ class ChallengeController < ApplicationController
   def new
     @challenge = Challenge.new
     @form_path = challenge_create_path
+  end
+
+  def edit
+    puts @challenge
+    @form_path = challenge_update_path(@challenge)
   end
 
   def create
@@ -24,6 +30,17 @@ class ChallengeController < ApplicationController
       redirect_to(challenge_index_path(challenge))
     else
       flash[:notice] = 'Error al crear desafío'
+      redirect_back(fallback_location: request.referer)
+    end
+  end
+
+  def update
+    if @challenge.update(challenge_params)
+      #flash[:notice] = 'se actualizo correctamente'
+      redirect_back(fallback_location: request.referer)
+      flash[:notice] = 'se actualizo correctamente'
+    else
+      flash[:alert] = 'Error al actualizar'
       redirect_back(fallback_location: request.referer)
     end
   end
