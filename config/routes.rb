@@ -10,11 +10,4 @@ Rails.application.routes.draw do
   get 'homepage/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homepage#index'
-
-  # Mantenedor de desafíos
-  get 'challenge/new'
-  get 'challenge/index'
-  get 'challenge/edit/:challenge_id' => 'challenge#edit', as: 'challenge_edit'
-  post 'challenge/create'
-  post 'challenge/update/:challenge_id' => 'challenge#update', as: 'challenge_update'
 end
