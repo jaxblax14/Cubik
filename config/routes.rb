@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'units/unit_1'
   get 'units/unit_2'
   get 'units/unit_3'
