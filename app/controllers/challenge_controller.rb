@@ -26,7 +26,7 @@ class ChallengeController < ApplicationController
     end
 
     if challenge.save
-      # flash[:notice] = 'Tu desafío ha sido creado exitosamente'
+      flash[:notice] = 'Tu desafío ha sido creado exitosamente'
       redirect_to(challenge_index_path(challenge))
     else
       flash[:notice] = 'Error al crear desafío'
