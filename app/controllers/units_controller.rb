@@ -34,7 +34,7 @@ class UnitsController < ApplicationController
       flash[:notice] = 'Debes completar todos los campos obligatorios'
       redirect_back(fallback_location: request.referer) and return
     end
-    # Edicion de la  etapa y de las preguntas de la etapa
+    # Edicion de la  etapa
     if @units.update(unit_params)
       flash[:notice] = 'Etapa modificada exitosamente'
       redirect_back(fallback_location: request.referer)
