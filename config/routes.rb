@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :challenge do
+    get ':challenge_id/units/assign'=> 'units#assign', as: 'units_assign'
+    get ':challenge_id/units/edit/(:challenge_has_unit_id)'=> 'units#edit', as: 'units_edit'
+    post ':challenge_id/units/save_assign' => 'units#save_assign', as: 'units_save_assign'
+    post ':challenge_id/units/update/(:challenge_has_unit_id)' => 'units#update', as: 'units_update'
+  end
   devise_for :users
   get 'challenge/index'
   get 'dashboard/index'

@@ -1,0 +1,20 @@
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1>Nuevo desafío</h1>
+    <p>Selecciona las estapas disponibles para este nuevo desafío</p>
+  </div>
+</section>
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <%= form_tag(challenge_units_save_assign_path(@challenge)) do %>
+      <% @units.each do |unit| %>
+        <div class="form-group">
+          <%= check_box_tag("units[#{unit.id}]", unit.id) %>
+          <%= label_tag("units[#{unit.id}]", unit.name) %>
+        </div>
+      <% end %>
+      <div class="col text-right">
+      <%= submit_tag('Continuar', :class => 'btn btn-primary') %>
+    </div>
+    <% end %>
+</section>
