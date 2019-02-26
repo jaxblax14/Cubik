@@ -1,2 +1,24 @@
-<h1>Challenge::Units#edit</h1>
-<p>Find me in app/views/challenge/units/edit.html.erb</p>
+<section class="header row">
+  <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1>Nuevo desafío</h1>
+    <p>Etapa <%= @challenge_has_unit.unit.id %>: <%= @challenge_has_unit.unit.name %></p>
+  </div>
+</section>
+
+<%= form_tag(challenges_units_update_path(@challenge, @challenge_has_unit)) do %>
+  <section class="row">
+    <section class="col-xs-12 col-md-8 col-lg-9">
+      <div class="form-group">
+        <%= label_tag("challenge_has_unit[instructions]", "Instrucciones de la etapa") %>
+        <%= text_area_tag("challenge_has_unit[instructions]", @challenge_has_unit.instructions) %>      
+      </div>
+    </section>
+  </section>
+  <div class="col text-right">
+    <% if @challenge_has_unit.unit_id == 6 %>
+      <%= submit_tag('Publicar desafio', :class => 'btn btn-success') %>
+    <% else %>
+      <%= submit_tag('Continuar',  :class => 'btn btn-primary') %>
+    <% end %>
+  </div>
+<%end%> 
