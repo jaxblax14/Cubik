@@ -17,3 +17,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".alert").alert('close');
+        $(".notice").alert('close');
+    }, 2000).fadeOut("slow");
+  });

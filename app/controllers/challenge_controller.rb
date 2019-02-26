@@ -37,7 +37,7 @@ class ChallengeController < ApplicationController
   def update
     if @challenge.update(challenge_params)
       flash[:notice] = 'se actualizo correctamente'
-      redirect_to(challenges_units_assign_path(@challenge))
+      redirect_to(challenge_units_assign_path(@challenge))
     else
       flash[:alert] = 'Error al actualizar'
       redirect_back(fallback_location: request.referer)

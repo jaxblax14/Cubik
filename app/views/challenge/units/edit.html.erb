@@ -5,12 +5,12 @@
   </div>
 </section>
 
-<%= form_tag(challenges_units_update_path(@challenge, @challenge_has_unit)) do %>
+<%= form_tag(challenge_units_update_path(@challenge, @challenge_has_unit)) do %>
   <section class="row">
     <section class="col-xs-12 col-md-8 col-lg-9">
       <div class="form-group">
-        <%= label_tag("challenge_has_unit[instructions]", "Instrucciones de la etapa") %>
-        <%= text_area_tag("challenge_has_unit[instructions]", @challenge_has_unit.instructions) %>      
+        <%= label_tag("challenge_has_unit[instruction]", "Instrucciones de la etapa") %>
+        <%= text_area_tag("challenge_has_unit[instruction]", @challenge_has_unit.instruction) %>      
       </div>
     </section>
   </section>
