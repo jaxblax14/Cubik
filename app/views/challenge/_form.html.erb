@@ -7,6 +7,10 @@
     <%= label_tag('challenge[description]', 'Descripción:') %>
     <%= text_field_tag('challenge[description]', @challenge.description, :class =>"form-control") %>
   </div>
+  <div>
+    <%= label_tag('challenge[introduction]', 'introduction:') %>
+    <%= text_area_tag('challenge[introduction]', @challenge.introduction, :class =>"form-control") %>
+  </div>
   <!-- Navegación entre la configuración -->
   <nav class="bottom-nav">
     <div class="row">
