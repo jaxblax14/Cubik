@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  get 'challenge_intro/intro//:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
+  get 'show_units/unit_1/:challenge_id' => 'show_units#unit_1' , as: 'show_units_unit_1'
+  get 'show_units/unit_2'
+  get 'show_units/unit_3'
+  get 'show_units/unit_4'
+  get 'show_units/unit_5'
+  get 'show_units/ending'
+  
+
+  get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
   namespace :challenge do
     get ':challenge_id/units/assign'=> 'units#assign', as: 'units_assign'
     get ':challenge_id/units/edit/(:challenge_has_unit_id)'=> 'units#edit', as: 'units_edit'
