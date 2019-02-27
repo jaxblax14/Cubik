@@ -12,12 +12,12 @@ class ApplicationController < ActionController::Base
 		if current_user.present?
 			if current_user.roles.where(id:1).any?
 				unless controller_name =="challenge" || devise_controller?
-					flash[:danger] = "No tienes autorización para entrar en esa sección"
+					flash[:alert] = "No tienes autorización para entrar en esa sección"
 					redirect_to challenge_index_path
 				end
 			elsif current_user.roles.where(id:2).any?
 				if controller_name =="challenge" 
-					flash[:danger] = "No tienes autorización para entrar en esa sección"
+					flash[:alert] = "No tienes autorización para entrar en esa sección"
 					redirect_to dashboard_index_path
 				end	
 			end
