@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :omniauthable
-  has_many :todos
+         :recoverable, :rememberable,:validatable,
+         :omniauthable
+
+   has_many :user_has_roles
+   has_many :roles, through: :user_has_roles
 
   def self.new_with_session(params, session)
 	  super.tap do |user|

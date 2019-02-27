@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
+    sessions:           "users/sessions",
+    passwords:          "users/passwords",
+    registrations:      "users/registrations",
+    confirmations:      "users/confirmations"}
   get 'units/unit_1'
   get 'units/unit_2'
   get 'units/unit_3'

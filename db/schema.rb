@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_202238) do
+ActiveRecord::Schema.define(version: 2019_02_27_152226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 2019_02_26_202238) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "role_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.bigint "role_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_type_id"], name: "index_roles_on_role_type_id"
+  end
+
   create_table "unit_has_questions", force: :cascade do |t|
     t.bigint "unit_id"
     t.bigint "question_id"
@@ -86,6 +100,15 @@ ActiveRecord::Schema.define(version: 2019_02_26_202238) do
     t.text "link_video"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_has_roles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_has_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_has_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,6 +134,9 @@ ActiveRecord::Schema.define(version: 2019_02_26_202238) do
   add_foreign_key "projects", "challenges"
   add_foreign_key "projects", "project_states"
   add_foreign_key "projects", "units"
+  add_foreign_key "roles", "role_types"
   add_foreign_key "unit_has_questions", "questions"
   add_foreign_key "unit_has_questions", "units"
+  add_foreign_key "user_has_roles", "roles"
+  add_foreign_key "user_has_roles", "users"
 end
