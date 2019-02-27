@@ -13,9 +13,10 @@
 		<h5>Información del desafío</h5>
 		<p><%= @challenge.introduction %></p>
 
-		<% @units.each do |unit| %>
+		<% @challenge_has_units.where(challenge_id:@challenge.id).each do |challenge_has_unit| %>
 			<div>
-				<h3><%= unit.name %></h3>
+				<h3><%= challenge_has_unit.unit.name%></h3>
+				<p><%= challenge_has_unit.instruction %></p>
 			</div>
   	<% end %>	
 	</div>
