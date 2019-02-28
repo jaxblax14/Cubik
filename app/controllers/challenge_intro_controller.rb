@@ -22,6 +22,26 @@ def new_project
     #falta agregar un redirect_back
     end    
   end
+  
+  def activate
+  #activa el proyecto  con una id 2 de activado 
+  if @project.boards.any? && @project.students.any?
+    @project.state_id = 2
+    @project.save
+    @project.challenge.challenge_has_stages.each do |challenge_has_stage|
+      new_phase = Phase.new(challenge_has_stage_id: challenge_has_stage.id, index_order: challenge_has_stage.stage.index_order)
+      new_phase.questions = challenge_has_stage.stage.questions.where.not(is_deleted: true).order(:index_order).map do |question|
+        { question_type_id: question.question_type_id, content: question.content, question_file_type_id: question.question_file_type_id }
+      end
+      @project.phases <<  new_phase
+    end unless @project.phases.any?
+    redirect_to(welcome_stages_index_path(@project))
+  else
+    flash[:notice]= 'Por favor ingrese los datos.'
+    redirect_back(fallback_location: request.referer)
+    @units = Unit.all
+    @challenge_has_units = ChallengeHasUnit.all
+  end
 
   private
 
