@@ -1,13 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	before_action :authenticate_admin!
-	def after_sign_in_path_for(resource)
-		if current_user.roles.where(id:1).any?
-      challenge_index_path
-    elsif current_user.roles.where(id:2).any?
-		  dashboard_index_path
-		end
-	end
+
 	def authenticate_admin!
 		if current_user.present?
 			if current_user.roles.where(id:1).any?
