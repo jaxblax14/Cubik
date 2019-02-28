@@ -32,6 +32,8 @@ class ChallengeIntroController < ApplicationController
   else
     flash[:notice]= 'Por favor ingrese los datos.'
     redirect_back(fallback_location: request.referer)
+    @units = Unit.all
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
 
