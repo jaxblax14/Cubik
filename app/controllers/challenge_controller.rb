@@ -20,7 +20,7 @@ class ChallengeController < ApplicationController
     challenge = Challenge.new(challenge_params)
 
     # Validación presencia de todos los parámetros del formulario
-    if challenge.title.blank? || challenge.description.blank?
+    if challenge.title.blank? || challenge.description.blank? || challenge.introduction.blank?
       flash[:alert] = 'Debes completar todos los campos requeridos'
       redirect_back(fallback_location: request.referer) and return
     end

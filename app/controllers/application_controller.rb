@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	def authenticate_admin!
 		if current_user.present?
 			if current_user.roles.where(id:1).any?
-				unless controller_name =="challenge" || devise_controller?
+				unless controller_name =="challenge" || controller_name =="units" || devise_controller?
 					flash[:alert] = "No tienes autorización para entrar en esa sección"
 					redirect_to challenge_index_path
 				end
