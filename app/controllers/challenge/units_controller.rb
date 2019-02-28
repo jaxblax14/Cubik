@@ -56,7 +56,7 @@ private
     end
   end
   def challenge_has_unit_params
-    params.require(:challenge_has_unit).permit(:instruction )
+    params.require(:challenge_has_unit).permit(:instruction, :videolink , :content)
   end
 
 end
