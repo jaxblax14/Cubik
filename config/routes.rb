@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     post ':challenge_id/units/save_assign' => 'units#save_assign', as: 'units_save_assign'
     post ':challenge_id/units/update/(:challenge_has_unit_id)' => 'units#update', as: 'units_update'
   end
-  devise_for :users
-  # se muestran todos los challenges creados
-  get 'challenge/index'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
+    sessions:           "users/sessions",
+    passwords:          "users/passwords",
+    registrations:      "users/registrations",
+    confirmations:      "users/confirmations"}
   #dashboard usuarios.
   get 'dashboard/index'
   #homepage

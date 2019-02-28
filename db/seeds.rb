@@ -26,3 +26,9 @@ Unit.create([
               {name: 'Unidad 5', index_order: 5},
               {name: 'Finalizado', index_order: 6}
 ])
+
+Role.create([
+              {name: 'Admin', role_type: RoleType.create(name: 'Atix')},
+              {name: 'Usuario', role_type: RoleType.create(name: 'User')}
+            ])
+
