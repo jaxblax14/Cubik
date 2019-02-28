@@ -70,3 +70,7 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 # device
 gem 'devise'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook' 
