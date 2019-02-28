@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_02_28_193519) do
     t.bigint "unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "videolink"
     t.text "content"
     t.index ["challenge_id"], name: "index_challenge_has_units_on_challenge_id"
     t.index ["unit_id"], name: "index_challenge_has_units_on_unit_id"
