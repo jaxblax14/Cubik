@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_193519) do
+ActiveRecord::Schema.define(version: 2019_03_01_192959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2019_02_28_193519) do
     t.bigint "unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "videolink"
     t.text "content"
+    t.string "link_video"
     t.index ["challenge_id"], name: "index_challenge_has_units_on_challenge_id"
     t.index ["unit_id"], name: "index_challenge_has_units_on_unit_id"
   end
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_193519) do
     t.string "provider"
     t.string "uid"
     t.text "image"
+    t.boolean "suscription"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

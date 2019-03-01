@@ -6,7 +6,33 @@
         <div class="embed-responsive embed-responsive-16by9">
         </div>
         <div class="actions">
-          <%= link_to 'Siguiente unidad',show_units_unit_3_path(@challenge), :class => 'btn btn-success btn-block' %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#paymemodal">
+            Siguiente etapa
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="paymemodalLabel">Comprar Suscripción</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <h4>Suscripción por un año</h4>
+                <p>$15.00</p>
+                <p>Acceso a todos los desafios de la plataforma</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        	        <%= link_to 'Suscribirse',show_units_unit_3_path(@challenge), :class => 'btn btn-success' %>
+                </div>
+              </div>
+            </div>
+          </div>        
         </div>
       </section>
       
