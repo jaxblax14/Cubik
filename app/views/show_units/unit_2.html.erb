@@ -10,7 +10,7 @@
   </div>
 </div>
 </section>
-
+    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
   <div id="blocklyArea"></div>
   <div id="blocklyDiv" style="position: absolute"></div>
 
@@ -197,7 +197,8 @@
   var blocklyArea = document.getElementById('blocklyArea');
   var blocklyDiv = document.getElementById('blocklyDiv');
   var Workspace = Blockly.inject(blocklyDiv,
-  {toolbox: document.getElementById('toolbox'),
+  {maxBlocks: 5,
+    toolbox: document.getElementById('toolbox'),
        grid:
          {spacing: 20,
           length: 3,
@@ -337,5 +338,13 @@
       element.click();
 
       document.body.removeChild(text);
-  } 
+  };
+      function onchange(event) {
+      document.getElementById('capacity').textContent =
+          Workspace.remainingCapacity();
+    }
+
+    Workspace.addChangeListener(onchange);
+    onchange();
+  </script>
 </script>

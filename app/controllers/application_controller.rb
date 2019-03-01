@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
 				end	
 			end
 		 else	
-			unless devise_controller? || controller_name =="homepage"
-				redirect_to homepage_index_path
+			unless devise_controller? || controller_name =="homepage" || controller_name =="dashboard" || controller_name =="challenge_intro"
+				redirect_to user_session_path
 			end
  		end
  	end
