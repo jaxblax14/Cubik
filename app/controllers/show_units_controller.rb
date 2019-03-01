@@ -1,4 +1,6 @@
 class ShowUnitsController < ApplicationController
+  before_action :set_challenge
+
   def unit_1
   end
 
