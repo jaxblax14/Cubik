@@ -21,3 +21,215 @@
     </div>
   </section>
 </section>
+<section class="header row">
+<div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+    <h1>Fabricación de la solución</h1>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
+    <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    Descargar Codigo</button>
+    <div class="actions">
+    </div>
+  </div>
+</div>
+</section>
+    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
+  <div id="blocklyArea"></div>
+  <div id="blocklyDiv" style="position: absolute"></div>
+
+  <style>
+    #blocklyArea {
+      height: 70vh;
+      width: 120vh;
+    }
+  </style>
+  <xml id="toolbox" style="display: none">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="math_number">
+      <field name="NUM">123</field>
+    </block>
+    <block type="math_arithmetic"></block>
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </xml>
+<!-- Modal Selección de lenguaje -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Seleccion de lenguaje</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Selecciona uno de los siguientes lenguajes disponibles para la descarga de tu código.</p>
+        <button class="btn btn-primary btn-sm" onclick="downloadCodeJ()">Codigo JavaScript</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadCodel()">Codigo Lua</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadCodePython()">Codigo Python</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadCodePHP()">Codigo PHP</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadCodeDart()">Codigo Dart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  var blocklyArea = document.getElementById('blocklyArea');
+  var blocklyDiv = document.getElementById('blocklyDiv');
+  var Workspace = Blockly.inject(blocklyDiv,
+  {maxBlocks: 5,
+    toolbox: document.getElementById('toolbox'),
+       grid:
+         {spacing: 20,
+          length: 3,
+          colour: '#ccc',
+          snap: true},
+     trashcan: true,
+     zoom:
+         {controls: true,
+          wheel: true,
+          startScale: 1.0,
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2},
+     trashcan: true});
+
+  var onresize = function(e) {
+    // Compute the absolute coordinates and dimensions of blocklyArea.
+    var element = blocklyArea;
+    var x = 0;
+    var y = 0;
+    do {
+      x += element.offsetLeft;
+      y += element.offsetTop;
+      element = element.offsetParent;
+    } while (element);
+    // Position blocklyDiv over blocklyArea.
+    blocklyDiv.style.left = x + 'px';
+    blocklyDiv.style.top = y + 'px';
+    blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+    blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+    Blockly.svgResize(Workspace);
+  };
+  window.addEventListener('resize', onresize, false);
+  onresize();
+  Blockly.svgResize(Workspace);
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(Workspace);
+      alert(code);
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = Blockly.JavaScript.workspaceToCode(Workspace);
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+    function downloadCodeJ(filename, text){
+
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(Workspace);
+      var element = document.createElement('a');
+      filename = "Blockly.js"
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+   
+      element.click();
+
+      document.body.removeChild(text);
+  }
+    function downloadCodel(filename, text){
+
+      Blockly.Lua.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Lua.workspaceToCode(Workspace);
+      var element = document.createElement('a');
+      filename = "Blockly.lua"
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+   
+      element.click();
+
+      document.body.removeChild(text);
+  }
+
+    function downloadCodePython(filename, text){
+
+      Blockly.Python.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Python.workspaceToCode(Workspace);
+      var element = document.createElement('a');
+      filename = "Blockly.py"
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+   
+      element.click();
+
+      document.body.removeChild(text);
+  }
+
+    function downloadCodePHP(filename, text){
+
+      Blockly.PHP.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.PHP.workspaceToCode(Workspace);
+      var element = document.createElement('a');
+      filename = "Blockly.php"
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+   
+      element.click();
+
+      document.body.removeChild(text);
+  }
+
+    function downloadCodeDart(filename, text){
+
+      Blockly.Dart.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Dart.workspaceToCode(Workspace);
+      var element = document.createElement('a');
+      filename = "Blockly.dart"
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+   
+      element.click();
+
+      document.body.removeChild(text);
+  };
+      function onchange(event) {
+      document.getElementById('capacity').textContent =
+          Workspace.remainingCapacity();
+    }
+
+    Workspace.addChangeListener(onchange);
+    onchange();
+  </script>
+</script>

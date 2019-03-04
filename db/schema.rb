@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 2019_03_01_192959) do
     t.datetime "updated_at", null: false
     t.text "content"
     t.string "link_video"
+<<<<<<< HEAD
+=======
+    t.text "videolink"
+>>>>>>> feature/blockly-units
     t.index ["challenge_id"], name: "index_challenge_has_units_on_challenge_id"
     t.index ["unit_id"], name: "index_challenge_has_units_on_unit_id"
   end
