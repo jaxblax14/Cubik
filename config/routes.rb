@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'show_units/unit_1/:challenge_id' => 'show_units#unit_1' , as: 'show_units_unit_1'
-  post 'show_units/unit_2/:challenge_id' => 'show_units#unit_2' , as: 'show_units_unit_2'
-  post 'show_units/unit_3/:challenge_id' => 'show_units#unit_3' , as: 'show_units_unit_3'
-  post 'show_units/unit_4/:challenge_id' => 'show_units#unit_4' , as: 'show_units_unit_4'
-  post 'show_units/unit_5/:challenge_id' => 'show_units#unit_5' , as: 'show_units_unit_5'
-  post 'show_units/ending/:challenge_id' => 'show_units#ending' , as: 'show_units_ending'
+  get 'show_units/unit_2/:challenge_id' => 'show_units#unit_2' , as: 'show_units_unit_2'
+  get 'show_units/unit_3/:challenge_id' => 'show_units#unit_3' , as: 'show_units_unit_3'
+  get 'show_units/unit_4/:challenge_id' => 'show_units#unit_4' , as: 'show_units_unit_4'
+  get 'show_units/unit_5/:challenge_id' => 'show_units#unit_5' , as: 'show_units_unit_5'
+  get 'show_units/ending/:challenge_id' => 'show_units#ending' , as: 'show_units_ending'
   
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'

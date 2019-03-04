@@ -1,29 +1,19 @@
-<section>
-  <section>
-    <div class="row">
-      <section class="col-xs-12 col-md-4 col-lg-3">
-        <h2>Unidad 3</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-        </div>
-        <h4>Contenido de la unidad</h4> 
-        <% @challenge_has_units.where(unit_id:3).each do |challenge_has_unit|%>
-          <%= challenge_has_unit.content %>
-        <% end %>
-        <div class="actions">
-          <%= link_to 'Siguiente unidad',show_units_unit_4_path(@challenge), :class => 'btn btn-success btn-block' %>
-        </div>
-      </section>
-      
-      <section class="col-xs-12 col-md-8 col-lg-9">
-        <div class="text-center">
-        </div>
-      </section>
+<div class="row">
+  <section class="col-xs-12 col-md-4 col-lg-3">
+    <h2>Unidad 3</h2>
+    <div class="embed-responsive embed-responsive-16by9">
+    </div>
+    <h4>Contenido de la unidad</h4> 
+    <% @challenge_has_units.where(unit_id:3).each do |challenge_has_unit|%>
+      <%= challenge_has_unit.content %>
+    <% end %>
+    <div class="actions">
+      <%= link_to 'Siguiente unidad',show_units_unit_4_path(@challenge), :class => 'btn btn-success btn-block' %>
     </div>
   </section>
-</section>
-<section class="header row">
-<div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
-    <h1>Fabricación de la solución</h1>
+
+<div class="col-xs-12 col-md-8 col-lg-9">
+    <h1>Blockly</h1>
 
   <div class="actions">
     <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
@@ -33,186 +23,187 @@
     <div class="actions">
     </div>    
   </div>
-</div>
-</section>
-    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
+
+  <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
   <div id="blocklyArea"></div>
   <div id="blocklyDiv" style="position: absolute"></div>
 
   <style>
     #blocklyArea {
       height: 70vh;
+      width: 150vh;
     }
   </style>
-  <xml id="toolbox" style="display: none">
-    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
-      <category name="If" colour="%{BKY_LOGIC_HUE}">
-        <block type="controls_if"></block>
-        <block type="controls_if">
-          <mutation else="1"></mutation>
-        </block>
-        <block type="controls_if">
-          <mutation elseif="1" else="1"></mutation>
-        </block>
+    <xml id="toolbox" style="display: none">
+      <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <category name="If" colour="%{BKY_LOGIC_HUE}">
+          <block type="controls_if"></block>
+          <block type="controls_if">
+            <mutation else="1"></mutation>
+          </block>
+          <block type="controls_if">
+            <mutation elseif="1" else="1"></mutation>
+          </block>
+        </category>
+        <category name="Boolean" colour="%{BKY_LOGIC_HUE}">
+          <block type="logic_compare"></block>
+          <block type="logic_operation"></block>
+          <block type="logic_negate"></block>
+          <block type="logic_boolean"></block>
+          <block type="logic_null"></block>
+          <block type="logic_ternary"></block>
+        </category>
       </category>
-      <category name="Boolean" colour="%{BKY_LOGIC_HUE}">
-        <block type="logic_compare"></block>
-        <block type="logic_operation"></block>
-        <block type="logic_negate"></block>
-        <block type="logic_boolean"></block>
-        <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
-      </category>
-    </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-      <block type="controls_repeat_ext">
-        <value name="TIMES">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_for">
-        <field name="VAR">i</field>
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-        <value name="BY">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_forEach"></block>
-      <block type="controls_flow_statements"></block>
-    </category>
-    <category name="Math" colour="%{BKY_MATH_HUE}">
-      <block type="math_number">
-        <field name="NUM">123</field>
-      </block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
-      <block type="math_trig"></block>
-      <block type="math_constant"></block>
-      <block type="math_number_property"></block>
-      <block type="math_round"></block>
-      <block type="math_on_list"></block>
-      <block type="math_modulo"></block>
-      <block type="math_constrain">
-        <value name="LOW">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="HIGH">
-          <block type="math_number">
-            <field name="NUM">100</field>
-          </block>
-        </value>
-      </block>
-      <block type="math_random_int">
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">100</field>
-          </block>
-        </value>
-      </block>
-      <block type="math_random_float"></block>
-      <block type="math_atan2"></block>
-    </category>
-    <category name="Lists" colour="%{BKY_LISTS_HUE}">
-      <block type="lists_create_empty"></block>
-      <block type="lists_create_with"></block>
-      <block type="lists_repeat">
-        <value name="NUM">
-          <block type="math_number">
-            <field name="NUM">5</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_length"></block>
-      <block type="lists_isEmpty"></block>
-      <block type="lists_indexOf"></block>
-      <block type="lists_getIndex"></block>
-      <block type="lists_setIndex"></block>
-    </category>
-    <sep></sep>
-    <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
-    </category>
-    <category name="Functions" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
-    </category>
-    <sep></sep>
-      <category name="Libreria Atix">
-        <block type="text_print">
-          <value name="TEXT">
-            <block type="text">
-              <field name="TEXT">'Transformando escuelas en Escuelas Inteligentes'</field>
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
             </block>
           </value>
-          <next>
-            <block type="text_print">
-              <value name="TEXT">
-                <block type="text">
-                  <field name="TEXT">Somos un Equipo</field>
-                </block>
-              </value>
-              <next>
-                <block type="text_print">
-                  <value name="TEXT">
-                    <block type="text">
-                      <field name="TEXT">Hace Calor</field>
-                    </block>
-                  </value>
-                  <next>
-                    <block type="text_print">
-                      <value name="TEXT">
-                        <block type="text">
-                          <field name="TEXT">:)</field>
-                        </block>
-                      </value>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
         </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+          <field name="VAR">i</field>
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+          <value name="BY">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
       </category>
-    </category>
-  </xml>
-<!-- Modal Selección de lenguaje -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Seleccion de lenguaje</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <p>Selecciona uno de los siguientes lenguajes disponibles para la descarga de tu código.</p>
-        <button class="btn btn-primary btn-sm" onclick="downloadCodeJ()">Codigo JavaScript</button>
-        <button class="btn btn-primary btn-sm" onclick="downloadCodel()">Codigo Lua</button>
-        <button class="btn btn-primary btn-sm" onclick="downloadCodePython()">Codigo Python</button>
-        <button class="btn btn-primary btn-sm" onclick="downloadCodePHP()">Codigo PHP</button>
-        <button class="btn btn-primary btn-sm" onclick="downloadCodeDart()">Codigo Dart</button>
+      <category name="Math" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+          <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+          <value name="LOW">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="HIGH">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_int">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_float"></block>
+        <block type="math_atan2"></block>
+      </category>
+      <category name="Lists" colour="%{BKY_LISTS_HUE}">
+        <block type="lists_create_empty"></block>
+        <block type="lists_create_with"></block>
+        <block type="lists_repeat">
+          <value name="NUM">
+            <block type="math_number">
+              <field name="NUM">5</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf"></block>
+        <block type="lists_getIndex"></block>
+        <block type="lists_setIndex"></block>
+      </category>
+      <sep></sep>
+      <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
+      </category>
+      <category name="Functions" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
+      </category>
+      <sep></sep>
+        <category name="Libreria Atix">
+          <block type="text_print">
+            <value name="TEXT">
+              <block type="text">
+                <field name="TEXT">'Transformando escuelas en Escuelas Inteligentes'</field>
+              </block>
+            </value>
+            <next>
+              <block type="text_print">
+                <value name="TEXT">
+                  <block type="text">
+                    <field name="TEXT">Somos un Equipo</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="text_print">
+                    <value name="TEXT">
+                      <block type="text">
+                        <field name="TEXT">Hace Calor</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_print">
+                        <value name="TEXT">
+                          <block type="text">
+                            <field name="TEXT">:)</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </category>
+      </category>
+    </xml>
+  </div>
+  <!-- Modal Selección de lenguaje -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Seleccion de lenguaje</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>Selecciona uno de los siguientes lenguajes disponibles para la descarga de tu código.</p>
+          <button class="btn btn-primary btn-sm" onclick="downloadCodeJ()">Codigo JavaScript</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadCodel()">Codigo Lua</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadCodePython()">Codigo Python</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadCodePHP()">Codigo PHP</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadCodeDart()">Codigo Dart</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 <script>
@@ -247,8 +238,8 @@
       element = element.offsetParent;
     } while (element);
     // Position blocklyDiv over blocklyArea.
-    blocklyDiv.style.left = x + 'px';
-    blocklyDiv.style.top = y + 'px';
+    blocklyDiv.style.left = 13 + 'px';
+    blocklyDiv.style.top = 120 + 'px';
     blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
     blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
     Blockly.svgResize(Workspace);

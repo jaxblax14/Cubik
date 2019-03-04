@@ -1,61 +1,51 @@
-<section>
-  <section>
-    <div class="row">
-      <section class="col-xs-12 col-md-4 col-lg-3">
-        <h2>Unidad 2</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-        </div>
-        <h4>Contenido de la unidad</h4>
-        <% @challenge_has_units.where(unit_id:2).each do |challenge_has_unit|%>
-          <%= challenge_has_unit.content %>
-        <% end %>
-        <div class="actions">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#paymemodal">
-            Siguiente etapa
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="paymemodalLabel">Comprar suscripción</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <h4>Suscripción por un año</h4>
-                  <p>Para continuar con las etapas debes adquirir una suscripción a la plataforma por $15.00 USD.</p>
-                  <p>Acceso a todos los desafios de la plataforma.</p>
-                  <p>En caso de que tengas una placa no es necesario comprar la suscripción, tu placa te dara acceso a todos los desafios de construccion de la plataforma.</p>
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Ingresa el codigo de tu placa :</label>
-                  <input type="text" class="form-control" id="recipient-name">
-        	        <%= link_to 'Ingresar codigo',show_units_unit_3_path(@challenge), :class => 'btn btn-success' %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        	        <%= link_to 'Suscribirse',show_units_unit_3_path(@challenge), :class => 'btn btn-success' %>
-                </div>
-              </div>
-            </div>
-          </div>        
-        </div>
-      </section>
-      
-      <section class="col-xs-12 col-md-8 col-lg-9">
-        <div class="text-center">
-        </div>
-      </section>
+<div class="row">
+  <section class="col-xs-12 col-md-4 col-lg-3">
+    <h2>Unidad 2</h2>
+    <div class="embed-responsive embed-responsive-16by9">
+    </div>
+    <h4>Contenido de la unidad</h4>
+    <% @challenge_has_units.where(unit_id:2).each do |challenge_has_unit|%>
+      <%= challenge_has_unit.content %>
+    <% end %>
+    <div class="actions">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#paymemodal">
+        Siguiente etapa
+      </button>
     </div>
   </section>
-</section>
-<section class="header row">
-<div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
-    <h1>Fabricación de la solución</h1>
+
+      <!-- Modal -->
+      <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="paymemodalLabel">Comprar suscripción</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4>Suscripción por un año</h4>
+              <p>Para continuar con las etapas debes adquirir una suscripción a la plataforma por $15.00 USD.</p>
+              <p>Acceso a todos los desafios de la plataforma.</p>
+              <p>En caso de que tengas una placa no es necesario comprar la suscripción, tu placa te dara acceso a todos los desafios de construccion de la plataforma.</p>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Ingresa el codigo de tu placa :</label>
+              <input type="text" class="form-control" id="recipient-name">
+              <%= link_to 'Ingresar codigo',show_units_unit_3_path(@challenge), :class => 'btn btn-success' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <%= link_to 'Suscribirse',show_units_unit_3_path(@challenge), :class => 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+      </div>        
+
+<div class="col-xs-12 col-md-8 col-lg-9">
+    <h1>Blockly</h1>
 
   <div class="actions">
     <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
@@ -63,17 +53,17 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
     Descargar Codigo</button>
     <div class="actions">
-    </1div>    
+    </div>    
   </div>
-</div>
-</section>
-    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
+
+  <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
   <div id="blocklyArea"></div>
   <div id="blocklyDiv" style="position: absolute"></div>
 
   <style>
     #blocklyArea {
       height: 70vh;
+      width: 150vh;
     }
   </style>
   <xml id="toolbox" style="display: none">
@@ -107,6 +97,7 @@
       <block type="text_print"></block>
     </category>
   </xml>
+  </div>
 <!-- Modal Selección de lenguaje -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -161,8 +152,8 @@
       element = element.offsetParent;
     } while (element);
     // Position blocklyDiv over blocklyArea.
-    blocklyDiv.style.left = x + 'px';
-    blocklyDiv.style.top = y + 'px';
+    blocklyDiv.style.left = 13 + 'px';
+    blocklyDiv.style.top = 120 + 'px';
     blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
     blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
     Blockly.svgResize(Workspace);
