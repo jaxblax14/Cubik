@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'wizzar_blockly/tutorial'
   get 'show_units/unit_1/:challenge_id' => 'show_units#unit_1' , as: 'show_units_unit_1'
   get 'show_units/unit_2/:challenge_id' => 'show_units#unit_2' , as: 'show_units_unit_2'
   get 'show_units/unit_3/:challenge_id' => 'show_units#unit_3' , as: 'show_units_unit_3'
