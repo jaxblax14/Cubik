@@ -74,3 +74,5 @@ gem 'devise'
 gem 'omniauth'
 
 gem 'omniauth-facebook' 
+
+gem 'rails-assets-shepherd.js', source: 'https://rails-assets.org'
