@@ -2,16 +2,19 @@
   <section>
     <div class="row">
       <section class="col-xs-12 col-md-4 col-lg-3">
-        <h2>Unidad 4 : Complicaciones matematicas</h2>
+        <h2>Unidad 4</h2>
         <div class="embed-responsive embed-responsive-16by9">
         </div>
+        <h4>Contenido de la unidad</h4>
+        <% @challenge_has_units.where(unit_id:4).each do |challenge_has_unit|%>
+          <%= challenge_has_unit.content %>
+        <% end %>
         <div class="actions">
           <%= link_to 'Siguiente unidad',show_units_unit_5_path(@challenge), :class => 'btn btn-success btn-block' %>
         </div>
       </section>
       
       <section class="col-xs-12 col-md-8 col-lg-9">
-        <h4>Contenido de la unidad</h4>
         <div class="text-center">
         </div>
       </section>

@@ -10,18 +10,23 @@ class ShowUnitsController < ApplicationController
   end
 
   def unit_2
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
   def unit_3
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
   def unit_4
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
   def unit_5
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
   def ending
+    @challenge_has_units = ChallengeHasUnit.all
   end
 
   private
