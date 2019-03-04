@@ -7,6 +7,9 @@
     <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
     Descargar Codigo</button>
+    <div class="actions">
+      <%= button_to 'Siguiete Unidad', show_units_unit_2_path(@challenge), :class => 'btn btn-success btn-block' %>
+    </div>
   </div>
 </div>
 </section>
@@ -19,7 +22,7 @@
       height: 70vh;
     }
   </style>
-   <xml id="toolbox" style="display: none">
+  <xml id="toolbox" style="display: none">
     <block type="controls_if"></block>
     <block type="logic_compare"></block>
     <block type="controls_repeat_ext"></block>
