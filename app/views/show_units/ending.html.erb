@@ -4,11 +4,10 @@
       <section class="col-xs-12 col-md-4 col-lg-3">
         <h2>Unidad final</h2>
         <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @challenge_has_unit.link_video.partition("=").last %>?rel=0" allowfullscreen></iframe>
         </div>
         <h4>Contenido de la unidad</h4>
-        <% @challenge_has_units.where(unit_id:6).each do |challenge_has_unit|%>
-          <%= challenge_has_unit.content %>
-        <% end %>
+          <%= @challenge_has_unit.content %>
         <div class="actions">
         	<%= link_to 'Finalizar', dashboard_index_path(@challenge), :class => 'btn btn-danger btn-block' %>
         </div>
