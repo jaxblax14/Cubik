@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_01_192959) do
+ActiveRecord::Schema.define(version: 2019_03_05_194645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,9 +73,11 @@ ActiveRecord::Schema.define(version: 2019_03_01_192959) do
     t.bigint "challenge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
     t.index ["challenge_id"], name: "index_projects_on_challenge_id"
     t.index ["project_state_id"], name: "index_projects_on_project_state_id"
     t.index ["unit_id"], name: "index_projects_on_unit_id"
+    t.index ["users_id"], name: "index_projects_on_users_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_192959) do
   add_foreign_key "projects", "challenges"
   add_foreign_key "projects", "project_states"
   add_foreign_key "projects", "units"
+  add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "roles", "role_types"
   add_foreign_key "unit_has_questions", "questions"
   add_foreign_key "unit_has_questions", "units"
