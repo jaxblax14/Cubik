@@ -2,6 +2,7 @@
   <section class="col-xs-12 col-md-4 col-lg-3">
     <h2>Unidad 1</h2>
     <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @challenge_has_unit.link_video.partition("=").last %>?rel=0" allowfullscreen></iframe>
     </div>
     <h4>Contenido de la unidad</h4> 
     <% @challenge_has_units.where(unit_id:1).each do |challenge_has_unit|%>
@@ -72,7 +73,7 @@
   var blocklyArea = document.getElementById('blocklyArea');
   var blocklyDiv = document.getElementById('blocklyDiv');
   var Workspace = Blockly.inject(blocklyDiv,
-  {maxBlocks: 5,
+  {maxBlocks: 6,
     toolbox: document.getElementById('toolbox'),
        grid:
          {spacing: 20,
