@@ -1,2 +1,22 @@
-<h1>ShowUnits#ending</h1>
-<p>Find me in app/views/show_units/ending.html.erb</p>
+<section>
+  <section>
+    <div class="row">
+      <section class="col-xs-12 col-lg-6 offset-lg-3 text-center">
+        <h2>Unidad final</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @challenge_has_unit.link_video.partition("=").last %>?rel=0" allowfullscreen></iframe>
+        </div>
+        <h4>Contenido de la unidad</h4>
+          <%= @challenge_has_unit.content %>
+        <div class="actions">
+        	<%= link_to 'Finalizar desafío', dashboard_index_path(@challenge), :class => 'btn btn-danger btn-block' %>
+        </div>
+      </section>
+      
+      <section class="col-xs-12 col-md-8 col-lg-9">
+        <div class="text-center">
+        </div>
+      </section>
+    </div>
+  </section>
+</section>
