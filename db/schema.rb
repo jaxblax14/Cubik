@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_03_01_192959) do
     t.text "content"
     t.string "link_video"
     t.text "videolink"
-
     t.index ["challenge_id"], name: "index_challenge_has_units_on_challenge_id"
     t.index ["unit_id"], name: "index_challenge_has_units_on_unit_id"
   end
