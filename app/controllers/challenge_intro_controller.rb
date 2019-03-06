@@ -3,21 +3,13 @@ class ChallengeIntroController < ApplicationController
   
   def intro
     @units = Unit.all
-    @challenge_has_units = ChallengeHasUnit.all
+    @challenge_has_units = ChallengeHasUnit.all.order(:unit_id)
   end
 
   private
 
   def set_challenge
   	@challenge = Challenge.find(params[:challenge_id])
-  end
-  
-  def set_project 
-    @project = Project.find(params[:project_id])
-  end
-
-  def project_params 
-    params.require(:project).permit(:project_state_id)
   end
 
 end
