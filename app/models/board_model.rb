@@ -1,0 +1,2 @@
+class BoardModel < ApplicationRecord
+end

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'show_units/unit_4/:project_id' => 'show_units#unit_4' , as: 'show_units_unit_4'
   get 'show_units/unit_5/:project_id' => 'show_units#unit_5' , as: 'show_units_unit_5'
   get 'show_units/ending/:project_id' => 'show_units#ending' , as: 'show_units_ending'
-  
+  # validacion de placa
+  post 'show_units/verification/:project_id' => 'show_units#verification' , as: 'show_units_verification'
+
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'
 

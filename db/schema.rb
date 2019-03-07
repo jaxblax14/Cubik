@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_194645) do
+ActiveRecord::Schema.define(version: 2019_03_07_182615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ads", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "board_models", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "boards", force: :cascade do |t|
     t.text "code_board"
@@ -21,7 +33,9 @@ ActiveRecord::Schema.define(version: 2019_03_05_194645) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
     t.index ["project_id"], name: "index_boards_on_project_id"
+    t.index ["users_id"], name: "index_boards_on_users_id"
   end
 
   create_table "challenge_has_units", force: :cascade do |t|
@@ -145,6 +159,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_194645) do
   end
 
   add_foreign_key "boards", "projects"
+  add_foreign_key "boards", "users", column: "users_id"
   add_foreign_key "challenge_has_units", "challenges"
   add_foreign_key "challenge_has_units", "units"
   add_foreign_key "project_has_units", "projects", column: "projects_id"
