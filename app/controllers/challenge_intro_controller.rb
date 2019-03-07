@@ -3,8 +3,8 @@ class ChallengeIntroController < ApplicationController
   
   def intro
     @units = Unit.all
-    @challenge_has_units = ChallengeHasUnit.all
-    
+    @challenge_has_units = ChallengeHasUnit.all.order(:unit_id)
+
     
     project = Project.new(challenge_id:  @challenge.id, project_state_id: 2, users_id: current_user.id)
     if project.save
@@ -17,14 +17,6 @@ class ChallengeIntroController < ApplicationController
 
   def set_challenge
   	@challenge = Challenge.find(params[:challenge_id])
-  end
-  
-  def set_project 
-    @project = Project.find(params[:project_id])
-  end
-
-  def project_params 
-    params.require(:project).permit(:project_state_id)
   end
 
 end

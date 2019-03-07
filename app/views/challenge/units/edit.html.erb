@@ -6,24 +6,18 @@
 </section>
 
 <%= form_tag(challenge_units_update_path(@challenge, @challenge_has_unit)) do %>
-  <section class="row">
-    <section class="col-xs-12 col-md-4 col-lg-3">
       <div class="form-group">
         <%= label_tag("challenge_has_unit[link_video]", "Video de la unidad:") %>
         <%= url_field_tag("challenge_has_unit[link_video]", @challenge_has_unit.link_video, :class => 'form-control', :placeholder => "http://", :required => true) %>   
       </div>
-    </section>
-    <section class="col-xs-12 col-md-8 col-lg-9">
       <div class="form-group">
         <%= label_tag("challenge_has_unit[instruction]", "Instrucciones de la etapa:") %><br>
-        <%= text_area_tag("challenge_has_unit[instruction]", @challenge_has_unit.instruction) %>      
+        <%= text_area_tag("challenge_has_unit[instruction]", @challenge_has_unit.instruction, :class =>"form-control") %>      
       </div>
       <div class="form-group">
         <%= label_tag("challenge_has_unit[content]", "Contenido de la unidad:") %><br>
-        <%= text_area_tag("challenge_has_unit[content]", @challenge_has_unit.content) %>      
+        <%= text_area_tag("challenge_has_unit[content]", @challenge_has_unit.content, :class =>"form-control") %>      
       </div>
-    </section>
-  </section>
   <div class="col text-right">
     <% if @challenge_has_unit.unit_id == 6 %>
       <%= submit_tag('Publicar desafio', :class => 'btn btn-success') %>
