@@ -1,5 +1,5 @@
 class ShowUnitsController < ApplicationController
-  before_action(:set_project, exceot: [:verification])
+  before_action(:set_project, except: [:verification])
 
   def activar_suscripcion
     redirect_to (show_units_unit_3_path(@project))
@@ -14,7 +14,6 @@ class ShowUnitsController < ApplicationController
       if board.users_id.nil? || board.users_id == user.id
         if board.project_id.nil?
           flash[:notice]= 'Codigo aceptado, ahora puedes continuar con el desafio'
-          redirect_to (show_units_unit_3_path(@project))
           board.user = user
           board.project = @project 
           board.save
