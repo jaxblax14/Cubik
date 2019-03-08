@@ -24,7 +24,31 @@
   </div>
 </section>
 
-
+<section class="activados">
+  <% if current_user.present? %>
+    <% if current_user.projects.where(project_state_id:2).any? %>
+      <section class="challenge challenge-closed">
+        <h5 class="challenge-title"><i class="fa fa-folder-open"></i> Desafíos activos</h5>
+        <div class="row">
+          <% current_user.projects.where(project_state_id:2).each do |project| %>
+            <div class="col-xs-12 col-lg-6 col-xl-4">
+              <%= link_to(show_units_unit_1_path(project)) do %>
+                <div class="card">
+                  <div class="card-body">
+                    <h5><%= project.challenge.title%> <span class="badge badge-success">Activo</span></h5>
+                    <p class="description"><%= project.challenge.description%></p>
+                    <p></strong> <br> comenzado el: <strong><%= project.created_at.strftime("%d-%m-%Y")%></strong></small></p>
+                    <button class="btn btn-primary">Ver reporte</button>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  <% end -%>
+</section>
 <br>
 <section class="tutorial">
   <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>
