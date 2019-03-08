@@ -1,5 +1,5 @@
 class ShowUnitsController < ApplicationController
-  before_action(:set_project, except: [:verification])
+  before_action(:set_project, include: :verification)
 
   def activar_suscripcion
     redirect_to (show_units_unit_3_path(@project))
@@ -10,14 +10,14 @@ class ShowUnitsController < ApplicationController
     code_board = params[:board][:code_board]
     board = Board.find_by(code_board: code_board)
     if board.present?
-      user = current_user.last
-      if board.users_id.nil? || board.users_id == user.id
+      user = current_user.id
+      if board.users_id.nil? || board.users_id == user
         if board.project_id.nil?
           flash[:notice]= 'Codigo aceptado, ahora puedes continuar con el desafio'
-          board.user = user
-          board.project = @project 
+          board.users_id = user
+          board.project = @project
           board.save
-          redirect_back(fallback_location: request.referer)
+          redirect_to (show_units_unit_3_path(@project))
         else
           flash[:alert]= 'Placa ya asociada a un proyecto.'
           redirect_back(fallback_location: request.referer)

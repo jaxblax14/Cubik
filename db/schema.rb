@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_182615) do
+ActiveRecord::Schema.define(version: 2019_03_08_190127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 2019_03_07_182615) do
 
   create_table "boards", force: :cascade do |t|
     t.text "code_board"
-    t.text "board_model"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "users_id"
+    t.bigint "board_model_id"
+    t.index ["board_model_id"], name: "index_boards_on_board_model_id"
     t.index ["project_id"], name: "index_boards_on_project_id"
     t.index ["users_id"], name: "index_boards_on_users_id"
   end
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_182615) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boards", "board_models"
   add_foreign_key "boards", "projects"
   add_foreign_key "boards", "users", column: "users_id"
   add_foreign_key "challenge_has_units", "challenges"
