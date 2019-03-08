@@ -1,16 +1,14 @@
 <div class="row">
   <section class="col-xs-12 col-md-4 col-lg-3 text-center">
-    <h2 id="unidad-intro">Unidad 1: El futuro nos espera.</h2>
+    <h2 id="unidad-intro">Tutorial: Matematicas con Blockly.</h2>
     <div class="embed-responsive embed-responsive-16by9">
      <iframe id="video-intro" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
     </div>
     <div>
       <ul>
-        <h4 id="mission-intro">Misiones de la unidad</h4>
-        <li>Mision 1</li>
-        <li>Mision 2</li>
-        <li>Mision 3</li>
-        <li>Mision 4</li>
+        <h4 id="mission-intro">Misiones del Tutorial</h4>
+        <li>Realiza Suma y/o Resta para llegar al resultado 14</li>
+        <li>Modifica la propiedad del bloque para realizar una Multiplicacion y/o División para llegar al resultado 14</li>
       </ul>
     </div>
     <div class="actions">
@@ -43,15 +41,15 @@
         }
       </style>
      <xml id="toolbox" style="display: none">
-       <block type="controls_if" id="control"></block>
-       <block type="logic_compare"></block>
-       <block type="controls_repeat_ext"></block>
        <block type="math_number">
-         <field name="NUM">123</field>
+         <field name="NUM">3</field>
        </block>
-       <block type="math_arithmetic"></block>
-       <block type="text"></block>
-       <block type="text_print"></block>
+              <block type="math_number">
+         <field name="NUM">4</field>
+       </block>
+       <block type="math_number">
+         <field name="NUM">8</field>
+       </block>
      </xml>
     <xml id="startBlocks" style="display: none">
      <block type="controls_if" inline="false" x="20" y="20">
@@ -61,22 +59,12 @@
            <field name="OP">EQ</field>
            <value name="A">
              <block type="math_arithmetic" inline="true">
-               <field name="OP">MULTIPLY</field>
-               <value name="A">
-                 <block type="math_number">
-                   <field name="NUM">6</field>
-                 </block>
-               </value>
-               <value name="B">
-                 <block type="math_number">
-                   <field name="NUM">7</field>
-                 </block>
-               </value>
+               <field name="OP">ADD</field>
              </block>
            </value>
            <value name="B">
              <block type="math_number">
-               <field name="NUM">42</field>
+               <field name="NUM">12</field>
              </block>
            </value>
          </block>
