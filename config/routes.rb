@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'show_units/ending/:project_id' => 'show_units#ending' , as: 'show_units_ending'
   get 'show_units/new_project/:challenge_id' => 'show_units#new_project' , as: 'show_units_new_project'
   get 'show_units/finalizar_desafio/:project_id' => 'show_units#finalizar_desafio', as: 'show_units_finalizar_desafio'
+  get 'show_units/pasar_2/:project_id' => 'show_units#pasar_2', as: 'show_units_pasar_2'
+  get 'show_units/pasar_3/:project_id' => 'show_units#pasar_3', as: 'show_units_pasar_3'    
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'
 

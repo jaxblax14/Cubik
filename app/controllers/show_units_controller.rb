@@ -42,7 +42,18 @@ class ShowUnitsController < ApplicationController
       redirect_to(dashboard_index_path)
     end
   end
-
+  def pasar_2
+    @project.unit_id = 2
+   if  @project.save
+      redirect_to(show_units_unit_2_path(@project))
+    end
+  end
+  def pasar_3
+    @project.unit_id = 3
+   if  @project.save
+      redirect_to(show_units_unit_3_path(@project))
+    end
+  end
   private
   def set_challenge
   	@challenge = Challenge.find(params[:challenge_id])
