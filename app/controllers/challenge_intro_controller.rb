@@ -3,8 +3,8 @@ class ChallengeIntroController < ApplicationController
   
   def intro
     @units = Unit.all
-    @challenge_has_units = ChallengeHasUnit.all.order(:unit_id)
-
+    @challenge_has_units = ChallengeHasUnit.all
+    
     
     project = Project.new(challenge_id:  @challenge.id, project_state_id: 2, users_id: current_user.id)
     if project.save

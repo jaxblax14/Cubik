@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # validacion de placa
   post 'show_units/verification/:project_id' => 'show_units#verification' , as: 'show_units_verification'
 
+  get 'show_units/new_project/:challenge_id' => 'show_units#new_project' , as: 'show_units_new_project'
+  get 'show_units/finalizar_desafio/:project_id' => 'show_units#finalizar_desafio', as: 'show_units_finalizar_desafio'
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'
 

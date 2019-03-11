@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
    has_many :user_has_roles
    has_many :roles, through: :user_has_roles
+   has_many :projects, foreign_key: "users_id", class_name: "Project"
 
   def self.new_with_session(params, session)
 	  super.tap do |user|

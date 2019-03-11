@@ -63,6 +63,14 @@ class ShowUnitsController < ApplicationController
     @challenge_has_units = @project.challenge.Challenge_has_units
     @challenge_has_unit = @challenge_has_units.find_by(unit_id: 6)
   end
+  def finalizar_desafio
+     @project.project_state_id = 3
+     
+    if @project.save
+      flash[:notice] = "Tu projecto a finalizado correctamente"
+      redirect_to(dashboard_index_path)
+    end
+  end
 
   private
   def set_challenge
