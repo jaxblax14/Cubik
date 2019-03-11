@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get 'show_units/unit_1/:project_id' => 'show_units#unit_1' , as: 'show_units_unit_1'
   get 'show_units/unit_2/:project_id' => 'show_units#unit_2' , as: 'show_units_unit_2'
   get 'show_units/unit_3/:project_id' => 'show_units#unit_3' , as: 'show_units_unit_3'
-  get 'show_units/unit_4/:project_id' => 'show_units#unit_4' , as: 'show_units_unit_4'
-  get 'show_units/unit_5/:project_id' => 'show_units#unit_5' , as: 'show_units_unit_5'
   get 'show_units/ending/:project_id' => 'show_units#ending' , as: 'show_units_ending'
   get 'show_units/new_project/:challenge_id' => 'show_units#new_project' , as: 'show_units_new_project'
   get 'show_units/finalizar_desafio/:project_id' => 'show_units#finalizar_desafio', as: 'show_units_finalizar_desafio'

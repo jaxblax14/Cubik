@@ -20,16 +20,6 @@ class ShowUnitsController < ApplicationController
     @challenge_has_unit = @challenge_has_units.find_by(unit_id: 3)
   end
 
-  def unit_4
-    @challenge_has_units = @project.challenge.Challenge_has_units
-    @challenge_has_unit = @challenge_has_units.find_by(unit_id: 4)
-  end
-
-  def unit_5
-    @challenge_has_units = @project.challenge.Challenge_has_units
-    @challenge_has_unit = @challenge_has_units.find_by(unit_id: 5)
-  end
-
   def ending
     @challenge_has_units = @project.challenge.Challenge_has_units
     @challenge_has_unit = @challenge_has_units.find_by(unit_id: 6)
