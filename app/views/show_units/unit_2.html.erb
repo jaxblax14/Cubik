@@ -13,7 +13,6 @@
       </button>
     </div>
   </section>
-
       <!-- Modal -->
       <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -38,42 +37,38 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               <%= link_to 'Suscribirse',show_units_unit_3_path(@project), :class => 'btn btn-success' %>
-            </div>
-          </div>
         </div>
-      </div>        
-
-<div class="col-xs-12 col-md-8 col-lg-9">
+      </div>
+    </div>
+  </div>        
+  <div class="col-xs-12 col-md-8 col-lg-9">
     <h1>Blockly</h1>
-
-  <div class="actions">
-    <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
-    <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-    Descargar Codigo</button>
     <div class="actions">
-    </div>    
+      <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
+      <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+      Descargar Codigo</button>   
   </div>
 
-  <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
+  <p><b>Tienes <span id="capacity"></span> block(s) Disponibles.</b></p>
   <div id="blocklyArea"></div>
   <div id="blocklyDiv" style="position: absolute"></div>
 
   <style>
     #blocklyArea {
-      height: 70vh;
+      height: 78vh;
       width: 150vh;
     }
   </style>
   <xml id="toolbox" style="display: none">
-    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+    <category name="Logica" colour="%{BKY_LOGIC_HUE}">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
       <block type="logic_boolean"></block>
     </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+    <category name="Bucles" colour="%{BKY_LOOPS_HUE}">
       <block type="controls_repeat_ext">
         <value name="TIMES">
           <block type="math_number">
@@ -83,14 +78,14 @@
       </block>
       <block type="controls_whileUntil"></block>
     </category>
-    <category name="Math" colour="%{BKY_MATH_HUE}">
+    <category name="Matematicas" colour="%{BKY_MATH_HUE}">
       <block type="math_number">
         <field name="NUM">123</field>
       </block>
       <block type="math_arithmetic"></block>
       <block type="math_single"></block>
     </category>
-    <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <category name="Texto" colour="%{BKY_TEXTS_HUE}">
       <block type="text"></block>
       <block type="text_length"></block>
       <block type="text_print"></block>
