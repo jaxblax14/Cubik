@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'show_units/pasar_2/:project_id' => 'show_units#pasar_2', as: 'show_units_pasar_2'
   get 'show_units/pasar_3/:project_id' => 'show_units#pasar_3', as: 'show_units_pasar_3'    
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
+  get 'challenge_intro/new_project/:challenge_id' => 'challenge_intro#new_project', as: 'challenge_intro_new_project'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'
 
   namespace :challenge do
