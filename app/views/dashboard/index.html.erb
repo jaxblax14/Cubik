@@ -14,8 +14,9 @@
           <div class="card">
             <div class="card-body">
               <h5><%= challenge.title %></h5>
-              <p class="description"><%= challenge.description %></p>
-              <button class="btn btn-primary">Entrar al desafío</button>
+              <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
+              <p style="color:black" class="description"><%= challenge.description %></p>
+              <button class="btn btn-primary btn-block">Entrar al desafío</button>
               </div>
           </div>
         <% end %> 
