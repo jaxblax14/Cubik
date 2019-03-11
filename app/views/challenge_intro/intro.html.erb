@@ -7,7 +7,11 @@
 			<%= @challenge.description %>
 		</p>
 		<div class="actions">
-		  <%= link_to 'Iniciar desafío',challenge_intro_new_project_path(@challenge), :class => 'btn btn-success btn-block' %>
+		<% if current_user.present?%>
+			<%= link_to 'Iniciar desafío',challenge_intro_new_project_path(@challenge), :class => 'btn btn-success btn-block' %>
+    <%else %>
+     	<%= link_to 'Inicia sesion para iniciar desafio',user_session_path, :class => 'btn btn-success btn-block' %>
+    <% end -%>
 		</div>
       <p></p>
       <% if current_user.present? %>
