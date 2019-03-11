@@ -6,6 +6,7 @@
     </div>
     <h4>Contenido de la unidad</h4>
       <%= @challenge_has_unit.content %>
+  <% if current_user.suscription == false || current_user.suscription == nil %> 
     <div class="actions">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#paymemodal">
@@ -13,89 +14,90 @@
       </button>
     </div>
   </section>
-
       <!-- Modal -->
-      <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="paymemodalLabel">Comprar suscripción</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h4>Suscripción por un año</h4>
-              <p>Para continuar con las etapas debes adquirir una suscripción a la plataforma por $15.00 USD.</p>
-              <p>Acceso a todos los desafios de la plataforma.</p>
-              <p>En caso de que tengas una placa no es necesario comprar la suscripción, tu placa te dara acceso a todos los desafios de construccion de la plataforma.</p>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Ingresa el codigo de tu placa :</label>
-              <input type="text" class="form-control" id="recipient-name" >
-              <%= link_to 'Ingresar codigo',show_units_pasar_3_path(@project), :class => 'btn btn-success'%>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-              <%= link_to 'Suscribirse',show_units_pasar_3_path(@project), :class => 'btn btn-success' %>
-            </div>
-          </div>
+  <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymemodalLabel">Comprar suscripción</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>        
-
-<div class="col-xs-12 col-md-8 col-lg-9">
-    <h1>Blockly</h1>
-
-  <div class="actions">
-    <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
-    <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-    Descargar Codigo</button>
-    <div class="actions">
-    </div>    
+        <div class="modal-body">
+          <h4>Suscripción por un año</h4>
+          <p>Para continuar con las etapas debes adquirir una suscripción a la plataforma por $15.00 USD.</p>
+          <p>Acceso a todos los desafios de la plataforma.</p>
+          <p>En caso de que tengas una placa no es necesario comprar la suscripción, tu placa te dara acceso a todos los desafios de construccion de la plataforma.</p>
+        </div>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Ingresa el codigo de tu placa :</label>
+          <input type="text" class="form-control" id="recipient-name" >
+          <%= link_to 'Ingresar codigo',show_units_pasar_3_path(@project), :class => 'btn btn-success'%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <%= link_to 'Suscribirse',show_units_pasar_3_path(@project), :class => 'btn btn-success btn-block' %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
-  <div id="blocklyArea"></div>
-  <div id="blocklyDiv" style="position: absolute"></div>
-
-  <style>
+  <% elsif current_user.suscription == true %>
+    <div class="actions">
+    <%= link_to 'Siguiente etapa',show_units_pasar_3_path(@project), :class => 'btn btn-success btn-block' %>
+    </div>
+  </section>
+  <% end -%>
+  <div class="col-xs-12 col-md-8 col-lg-9">
+    <h1>Blockly</h1>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
+      <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    Descargar Codigo</button>
+      <div class="actions">
+      </div>    
+    </div>
+    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
+    <div id="blocklyArea"></div>
+    <div id="blocklyDiv" style="position: absolute"></div>
+    <style>
     #blocklyArea {
       height: 70vh;
       width: 150vh;
     }
-  </style>
-  <xml id="toolbox" style="display: none">
-    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-    </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-      <block type="controls_repeat_ext">
+    </style>
+    <xml id="toolbox" style="display: none">
+      <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+      </category>
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
         <value name="TIMES">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
+        <block type="math_number">
+        <field name="NUM">10</field>
+        </block>
         </value>
-      </block>
-      <block type="controls_whileUntil"></block>
-    </category>
-    <category name="Math" colour="%{BKY_MATH_HUE}">
-      <block type="math_number">
+        </block>
+        <block type="controls_whileUntil"></block>
+      </category>
+      <category name="Math" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
         <field name="NUM">123</field>
-      </block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
-    </category>
-    <category name="Text" colour="%{BKY_TEXTS_HUE}">
-      <block type="text"></block>
-      <block type="text_length"></block>
-      <block type="text_print"></block>
-    </category>
-  </xml>
+        </block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+      </category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_length"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
   </div>
 <!-- Modal Selección de lenguaje -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
