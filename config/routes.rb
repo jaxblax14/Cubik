@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   get 'show_units/unit_1/:project_id' => 'show_units#unit_1' , as: 'show_units_unit_1'
   get 'show_units/unit_2/:project_id' => 'show_units#unit_2' , as: 'show_units_unit_2'
   get 'show_units/unit_3/:project_id' => 'show_units#unit_3' , as: 'show_units_unit_3'
-  get 'show_units/unit_4/:project_id' => 'show_units#unit_4' , as: 'show_units_unit_4'
-  get 'show_units/unit_5/:project_id' => 'show_units#unit_5' , as: 'show_units_unit_5'
   get 'show_units/ending/:project_id' => 'show_units#ending' , as: 'show_units_ending'
   # validacion de placa
   post 'show_units/verification/:project_id' => 'show_units#verification' , as: 'show_units_verification'
 
   get 'show_units/new_project/:challenge_id' => 'show_units#new_project' , as: 'show_units_new_project'
   get 'show_units/finalizar_desafio/:project_id' => 'show_units#finalizar_desafio', as: 'show_units_finalizar_desafio'
+  get 'show_units/pasar_2/:project_id' => 'show_units#pasar_2', as: 'show_units_pasar_2'
+  get 'show_units/pasar_3/:project_id' => 'show_units#pasar_3', as: 'show_units_pasar_3'    
   get 'challenge_intro/intro/:challenge_id' => 'challenge_intro#intro' , as: 'challenge_intro_intro'
+  get 'challenge_intro/new_project/:challenge_id' => 'challenge_intro#new_project', as: 'challenge_intro_new_project'
   post 'challenge_intro/unit_1/:challenge_id' => 'challenge_intro#unit_1' , as: 'challenge_intro_unit_1'
 
   namespace :challenge do

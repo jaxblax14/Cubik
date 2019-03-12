@@ -11,10 +11,6 @@
     <%= label_tag('challenge[introduction]', 'Introducción:') %>
     <%= text_area_tag('challenge[introduction]', @challenge.introduction, :class =>"form-control",:required => true) %>
   </div>
-    <div>
-    <%= label_tag('challenge[photo]', 'Foto:') %>
-    <%= text_field_tag('challenge[photo]', @challenge.photo, :class =>"form-control",:required => true) %>
-  </div>
   <!-- Navegación entre la configuración -->
   <nav class="bottom-nav">
     <div class="row">

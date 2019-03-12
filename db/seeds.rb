@@ -22,8 +22,6 @@ Unit.create([
               {name: 'Unidad 1', index_order: 1},
               {name: 'Unidad 2', index_order: 2},
               {name: 'Unidad 3', index_order: 3},
-              {name: 'Unidad 4', index_order: 4},
-              {name: 'Unidad 5', index_order: 5},
               {name: 'Finalizado', index_order: 6}
 ])
 
