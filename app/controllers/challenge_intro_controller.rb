@@ -7,10 +7,14 @@ class ChallengeIntroController < ApplicationController
 
   end 
   def new_project
-    project = Project.new(unit_id: 1, challenge_id:  @challenge.id, project_state_id: 2, users_id: current_user.id)
-    if project.save
-      redirect_to(show_units_unit_1_path(project))
-    end
+    if current_user.tutorial == true
+      project = Project.new(unit_id: 1, challenge_id:  @challenge.id, project_state_id: 2, users_id: current_user.id)
+      if project.save
+        redirect_to(show_units_unit_1_path(project))
+      end
+    else
+      redirect_to(wizzar_blockly_tutorial_path)
+    end    
   end
 
 
