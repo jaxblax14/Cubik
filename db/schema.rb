@@ -10,18 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_133525) do
+ActiveRecord::Schema.define(version: 2019_03_12_133556) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "ads", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "board_models", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "boards", force: :cascade do |t|
     t.text "code_board"
-    t.text "board_model"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.bigint "board_model_id"
+    t.index ["board_model_id"], name: "index_boards_on_board_model_id"
     t.index ["project_id"], name: "index_boards_on_project_id"
+    t.index ["users_id"], name: "index_boards_on_users_id"
   end
 
   create_table "challenge_has_units", force: :cascade do |t|
@@ -144,11 +160,14 @@ ActiveRecord::Schema.define(version: 2019_03_12_133525) do
     t.boolean "suscription"
     t.string "provider"
     t.string "uid"
+    t.boolean "tutorial"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boards", "board_models"
   add_foreign_key "boards", "projects"
+  add_foreign_key "boards", "users", column: "users_id"
   add_foreign_key "challenge_has_units", "challenges"
   add_foreign_key "challenge_has_units", "units"
   add_foreign_key "challenges", "users", column: "users_id"

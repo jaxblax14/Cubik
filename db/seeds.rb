@@ -28,5 +28,12 @@ Unit.create([
 Role.create([
               {name: 'Admin', role_type: RoleType.create(name: 'Atix')},
               {name: 'Usuario', role_type: RoleType.create(name: 'User')}
-            ])
+])
+
+board_model=BoardModel.create(name: 'Básico')
+
+Board.create([
+
+              {code_board:'CD-01',board_model: board_model}
+])
 

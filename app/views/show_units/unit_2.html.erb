@@ -14,6 +14,7 @@
       </button>
     </div>
   </section>
+
       <!-- Modal -->
   <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -30,10 +31,12 @@
           <p>Acceso a todos los desafios de la plataforma.</p>
           <p>En caso de que tengas una placa no es necesario comprar la suscripción, tu placa te dara acceso a todos los desafios de construccion de la plataforma.</p>
         </div>
-        <div class="form-group">
-          <label for="recipient-name" class="col-form-label">Ingresa el codigo de tu placa :</label>
-          <input type="text" class="form-control" id="recipient-name" >
-          <%= link_to 'Ingresar codigo',show_units_pasar_3_path(@project), :class => 'btn btn-success'%>
+        <div class="form-group text-center">
+          <%=form_tag(@form_path) do %>
+            <%= label_tag('board[code_board]','Codigo Placa:') %>
+            <%= text_field_tag('board[code_board]', nil, :class => "form-control") %> <br>
+            <%= submit_tag ('Confirmar codigo'),:class =>'btn btn-primary'%>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -50,32 +53,35 @@
   <% end -%>
   <div class="col-xs-12 col-md-8 col-lg-9">
     <h1>Blockly</h1>
-    <div class="actions">
-      <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
-      <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="showCode()">Show JavaScript</button>
+    <button class="btn btn-primary" onclick="runCode()">Run JavaScript</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
     Descargar Codigo</button>
-      <div class="actions">
-      </div>    
-    </div>
-    <p><b>Tines <span id="capacity"></span> block(s) Disponibles.</b></p>
-    <div id="blocklyArea"></div>
-    <div id="blocklyDiv" style="position: absolute"></div>
-    <style>
+    <div class="actions">
+    </div>    
+  </div>
+
+  <p><b>Tienes <span id="capacity"></span> block(s) Disponibles.</b></p>
+  <div id="blocklyArea"></div>
+  <div id="blocklyDiv" style="position: absolute"></div>
+
+  <style>
     #blocklyArea {
-      height: 78vh;
+      height: 70vh;
       width: 150vh;
     }
   </style>
   <xml id="toolbox" style="display: none">
-    <category name="Logica" colour="%{BKY_LOGIC_HUE}">
+    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
       <block type="logic_boolean"></block>
     </category>
-    <category name="Bucles" colour="%{BKY_LOOPS_HUE}">
+    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
       <block type="controls_repeat_ext">
         <value name="TIMES">
         <block type="math_number">
@@ -275,3 +281,4 @@
     Workspace.addChangeListener(onchange);
     onchange();
   </script>
+</script>
