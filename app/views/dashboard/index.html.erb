@@ -8,7 +8,7 @@
 <section class="challenge challenge-library">
   <h5 class="challenge-title"><i class="fa fa-grip-horizontal"></i> Biblioteca de desafíos</h5>
   <div class="row">
-    <% @challenges.where(is_published: true).each do |challenge| %>
+    <% @challenges.where(is_published: true,is_public: true).each do |challenge| %>
       <div class="col-xs-12 col-lg-6 col-xl-4">
       <%= link_to challenge_intro_intro_path(challenge) do %>
           <div class="card">
@@ -16,6 +16,7 @@
               <h5><%= challenge.title %></h5>
               <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
               <p style="color:black" class="description"><%= challenge.description %></p>
+              <p class="Nombre creador"> Creado por: <%= challenge.users_id %> </p>
               <button class="btn btn-primary btn-block">Entrar al desafío</button>
               </div>
           </div>
@@ -74,6 +75,28 @@
     <% end %>
   <% end -%>
 </section>
+<% if current_user.present? %>
+  <section class="challenge challenge-library">
+    <h5 class="challenge-title"><i class="fas fa-user-secret"></i> Desafios privados</h5>
+    <div class="row">
+      <% @challenges.where(is_published: true,is_public: false,users_id: current_user.id).each do |challenge| %>
+        <div class="col-xs-12 col-lg-6 col-xl-4">
+        <%= link_to challenge_intro_intro_path(challenge) do %>
+            <div class="card">
+              <div class="card-body">
+                <h5><%= challenge.title %></h5>
+                <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
+                <p style="color:black" class="description"><%= challenge.description %></p>
+                <p class="Nombre creador"> Creado por: <%= challenge.users_id %></p>
+                <button class="btn btn-primary btn-block">Entrar al desafío</button>
+                </div>
+            </div>
+          <% end %> 
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end -%>
 <br>
 <section class="tutorial">
   <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>

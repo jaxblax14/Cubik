@@ -11,14 +11,13 @@ class ChallengeController < ApplicationController
   end
 
   def edit
-    puts @challenge
     @form_path = challenge_update_path(@challenge)
   end
 
   def create
     # Inicialización variables
     challenge = Challenge.new(challenge_params)
-
+    
     # Validación presencia de todos los parámetros del formulario
     if challenge.title.blank? || challenge.description.blank? || challenge.introduction.blank?
       flash[:alert] = 'Debes completar todos los campos requeridos'
@@ -26,6 +25,7 @@ class ChallengeController < ApplicationController
     end
 
     if challenge.save
+      challenge.update(users_id: current_user.id)
       flash[:notice] = 'Tu desafío ha sido creado exitosamente'
       redirect_to(challenge_units_assign_path(challenge))
     else
@@ -50,6 +50,6 @@ class ChallengeController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:title, :description, :introduction, :photo)
+    params.require(:challenge).permit(:title, :description, :introduction, :is_public , :users_id)
   end
 end

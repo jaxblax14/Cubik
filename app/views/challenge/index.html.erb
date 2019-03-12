@@ -3,7 +3,6 @@
     <h1>Desafíos</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quod, nobis nisi, itaque, aspernatur laboriosam.</p>
     <%= link_to('Nuevo desafío', challenge_new_path,:class => 'btn btn-primary') %>
-    <%= link_to('Unidad', units_index_path,:class => 'btn btn-primary') %>
   </div>
 </section>
 
@@ -12,13 +11,14 @@
     <% if @challenge.any? %>
       <h5 class="challenge-title"><i class="fa fa-folder-open"></i> Desafíos Atix Lab 2</h5>
       <div class="row">
-        <% @challenge.where(is_published: true).each do |challenge| %>
+        <% @challenge.where(is_published: true ,is_public: true).each do |challenge| %>
           <div class="col-4">
             <%= link_to(challenge_edit_path(challenge)) do %>
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title"><%= challenge.title %></h5>
                   <p class="card-text"><%= challenge.description %></p>
+                  <p class="card-text"> <%= challenge.users_id %></p>
                   <button class="btn btn-primary">Editar desafío</button>
                 </div>
               </div>
@@ -27,5 +27,28 @@
         <% end %>
       </div>
     <% end %>
+    <% if %>
+      <% if @challenge.any? %>
+      <% if @challenge.where(users_id: current_user.id,is_public: false) %>
+          <h5 class="challenge-title"><i class="fas fa-user-secret"></i> Desafio privado</h5>
+          <div class="row">
+            <% @challenge.where(is_published: true ,is_public: false,users_id: current_user.id).each do |challenge| %>
+              <div class="col-4">
+                <%= link_to(challenge_edit_path(challenge)) do %>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= challenge.title %></h5>
+                      <p class="card-text"><%= challenge.description %></p>
+                      <p class="card-text"> <%= challenge.users_id %></p>
+                      <button class="btn btn-primary">Editar desafío</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end -%>
+    <% end -%>
   </section>
 </section>

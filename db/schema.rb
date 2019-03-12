@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_151547) do
+ActiveRecord::Schema.define(version: 2019_03_12_133525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 2019_03_07_151547) do
     t.boolean "is_published"
     t.text "introduction"
     t.string "photo"
+    t.boolean "is_public"
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_challenges_on_users_id"
   end
 
   create_table "project_has_units", force: :cascade do |t|
@@ -148,6 +151,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_151547) do
   add_foreign_key "boards", "projects"
   add_foreign_key "challenge_has_units", "challenges"
   add_foreign_key "challenge_has_units", "units"
+  add_foreign_key "challenges", "users", column: "users_id"
   add_foreign_key "project_has_units", "projects", column: "projects_id"
   add_foreign_key "project_has_units", "units", column: "units_id"
   add_foreign_key "projects", "challenges"

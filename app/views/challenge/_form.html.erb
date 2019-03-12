@@ -7,21 +7,17 @@
     <%= label_tag('challenge[description]', 'Descripción:') %>
     <%= text_field_tag('challenge[description]', @challenge.description, :class =>"form-control",:required => true) %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag('challenge[introduction]', 'Introducción:') %>
     <%= text_area_tag('challenge[introduction]', @challenge.introduction, :class =>"form-control",:required => true) %>
   </div>
+  <div class="form-group">
+    <p>Tu desafio sera: <%= select_tag "challenge[is_public]", options_for_select([["publico",true],["privado",false]], true) %></p>
+  </div>
   <!-- Navegación entre la configuración -->
   <nav class="bottom-nav">
-    <div class="row">
-      <div class="col text-left">
-      </div>
-      <div class="col text-center">
-        <p class="description"></p>
-      </div>
-      <div class="col text-right">
-        <%= submit_tag('Continuar',:class => 'btn btn-primary') %>
-      </div>
+    <div class="col text-right">
+      <%= submit_tag('Continuar',:class => 'btn btn-primary') %>
     </div>
   </nav>
-<% end %>
+<% end %> 
