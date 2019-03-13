@@ -41,6 +41,7 @@ class Challenge::UnitsController < ApplicationController
     else
       redirect_back(fallback_location: request.referer)
     end
+
   end
 
 private

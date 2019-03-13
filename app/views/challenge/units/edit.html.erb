@@ -12,14 +12,14 @@
       </div>
       <div class="form-group">
         <%= label_tag("challenge_has_unit[instruction]", "Instrucciones de la etapa:") %><br>
-        <%= text_area_tag("challenge_has_unit[instruction]", @challenge_has_unit.instruction, :class =>"form-control") %>      
+        <%= text_area_tag("challenge_has_unit[instruction]", @challenge_has_unit.instruction, :class =>"form-control", :required => true) %>      
       </div>
       <div class="form-group">
         <%= label_tag("challenge_has_unit[content]", "Contenido de la unidad:") %><br>
-        <%= text_area_tag("challenge_has_unit[content]", @challenge_has_unit.content, :class =>"form-control") %>      
+        <%= text_area_tag("challenge_has_unit[content]", @challenge_has_unit.content, :class =>"form-control", :required => true) %>      
       </div>
   <div class="col text-right">
-    <% if @challenge_has_unit.unit_id == 6 %>
+    <% if @challenge_has_unit.unit_id == 4 %>
       <%= submit_tag('Publicar desafio', :class => 'btn btn-success') %>
     <% else %>
       <%= submit_tag('Continuar',  :class => 'btn btn-primary') %>

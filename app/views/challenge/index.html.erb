@@ -1,7 +1,7 @@
 <section class="header row">
   <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
     <h1>Desafíos</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quod, nobis nisi, itaque, aspernatur laboriosam.</p>
+    <p>Aqui puedes crear tus propios desafios de manera privada o publica y compartirlos con la gente para retarlos a completar tus desafios.</p>
     <%= link_to('Nuevo desafío', challenge_new_path,:class => 'btn btn-primary') %>
   </div>
 </section>
@@ -30,7 +30,7 @@
     <% if %>
       <% if @challenge.any? %>
       <% if @challenge.where(users_id: current_user.id,is_public: false) %>
-          <h5 class="challenge-title"><i class="fas fa-user-secret"></i> Desafio privado</h5>
+          <h5 class="challenge-title"><i class="fas fa-user-secret"></i> Desafios privados</h5>
           <div class="row">
             <% @challenge.where(is_published: true ,is_public: false,users_id: current_user.id).each do |challenge| %>
               <div class="col-4">
