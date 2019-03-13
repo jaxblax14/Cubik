@@ -11,7 +11,7 @@
     <% if @challenge.any? %>
       <h5 class="challenge-title"><i class="fa fa-folder-open"></i> Desafíos Atix Lab 2</h5>
       <div class="row">
-        <% @challenge.where(is_published: true ,is_public: true).each do |challenge| %>
+        <% @challenge.where(is_published: true ,is_public: true,users_id: current_user.id).each do |challenge| %>
           <div class="col-4">
             <%= link_to(challenge_edit_path(challenge)) do %>
               <div class="card">
