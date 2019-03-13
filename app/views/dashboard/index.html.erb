@@ -11,7 +11,7 @@
     <% @challenges.where(is_published: true,is_public: true).each do |challenge| %>
       <div class="col-xs-12 col-lg-6 col-xl-4">
       <%= link_to challenge_intro_intro_path(challenge) do %>
-          <div class="card">
+          <div class="card" id="card">
             <div class="card-body">
               <h5><%= challenge.title %></h5>
               <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
@@ -41,7 +41,7 @@
                     <h5><%= project.challenge.title%> <span class="badge badge-success">Activo <%= project.unit_id %>/3</span></h5>
                     <p class="description"><%= project.challenge.description%></p>
                     <p></strong> <br> comenzado el: <strong><%= project.created_at.strftime("%d-%m-%Y")%></strong></small></p>
-                    <button class="btn btn-primary">Ver reporte</button>
+                    <button class="btn btn-primary">Continuar desafio.</button>
                   </div>
                 </div>
             <% end -%>
@@ -52,7 +52,7 @@
                   <h5><%= project.challenge.title%> <span class="badge badge-success">Activo <%= project.unit_id %>/3</span></h5>
                   <p class="description"><%= project.challenge.description%></p>
                   <p></strong> <br> comenzado el: <strong><%= project.created_at.strftime("%d-%m-%Y")%></strong></small></p>
-                  <button class="btn btn-primary">Ver reporte</button>
+                  <button class="btn btn-primary">Continuar desafio.</button>
                 </div>
               </div>
             <% end -%>
@@ -63,7 +63,7 @@
                     <h5><%= project.challenge.title%> <span class="badge badge-success">Activo <%= project.unit_id %>/3</span></h5>
                     <p class="description"><%= project.challenge.description%></p>
                     <p></strong> <br> comenzado el: <strong><%= project.created_at.strftime("%d-%m-%Y")%></strong></small></p>
-                    <button class="btn btn-primary">Ver reporte</button>
+                    <button class="btn btn-primary">Continuar desafio.</button>
                   </div>
                 </div>
             <% end -%>
