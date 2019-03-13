@@ -2,8 +2,8 @@
 <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
   <h1>Biblioteca de Desafíos</h1>
   <p>En la biblioteca de desafíos podrás ver todos los desafíos disponibles a desarrollar. Configura un nuevo desafío y actívalo para comenzar a trabajar.</p>
-  <%= link_to('Crear Desafío', challenge_new_path,:class => 'btn btn-primary') %>
-  <%= link_to('Desafíos Privados', challenge_index_path,:class => 'btn btn-primary') %>
+  <%= link_to('Editor de desafíos', challenge_index_path,:class => 'btn btn-primary') %>
+  <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>
 </div>
 </section>
 
@@ -11,21 +11,22 @@
   <h5 class="challenge-title"><i class="fa fa-grip-horizontal"></i> Biblioteca de desafíos</h5>
   <div class="row">
     <% @challenges.where(is_published: true,is_public: true).each do |challenge| %>
-      <div class="col-xs-12 col-lg-6 col-xl-4">
+    <div class="col-xs-12 col-lg-6 col-xl-4">
       <%= link_to challenge_intro_intro_path(challenge) do %>
-          <div class="card" id="card">
-            <div class="card-body">
-              <h5><%= challenge.title %></h5>
-              <% end %>
-              <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
-              <p style="color:black" class="description"><%= challenge.description %></p>
-              <p class="Nombre creador"> Creado por: <%= challenge.users_id %> </p>
-              <button class="btn btn-primary btn-block">Entrar al desafío</button>
-              </div>
-          </div>
-         
-      </div>
-    <% end %>
+      <div class="card" id="card">
+        <div class="card-body">
+          <h5><%= challenge.title %></h5>
+      <% end %>
+          <%#= image_tag(challenge.photo, :style => 'float:right; width:200px; margin:1px') %>
+          <p style="color:black" class="description"><%= challenge.description %></p>
+          <p class="Nombre creador"> Creado por: <%= challenge.users_id %> </p>
+          <%= link_to challenge_intro_intro_path(challenge) do %>
+          <button class="btn btn-primary btn-block">Entrar al desafío</button>
+          <% end -%>
+        </div>
+      </div>    
+      <% end %>
+    </div>
   </div>
 </section>
 
@@ -103,6 +104,3 @@
   <% end -%>
 <% end -%>
 <br>
-<section class="tutorial">
-  <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>
-</section>
