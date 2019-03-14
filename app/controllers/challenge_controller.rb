@@ -5,6 +5,13 @@ class ChallengeController < ApplicationController
     @challenge = Challenge.all
   end
 
+  def pasar_a_new
+    @current_user.suscription = true
+   if  current_user.save
+      redirect_to(challenge_new_path)
+    end
+  end  
+
   def new
     @challenge = Challenge.new
     @form_path = challenge_create_path

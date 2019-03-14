@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   # Mantenedor de desafíos
   get 'challenge/new'
+  get 'challenge/pasar_a_new'
   get 'challenge/index'
   get 'challenge/edit/:challenge_id' => 'challenge#edit', as: 'challenge_edit'
   post 'challenge/create'

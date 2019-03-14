@@ -2,10 +2,42 @@
   <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
     <h1>Desafíos</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quod, nobis nisi, itaque, aspernatur laboriosam.</p>
-    <%= link_to('Nuevo desafío', challenge_new_path,:class => 'btn btn-primary') %>
+    <% if current_user.suscription == false || current_user.suscription == nil %> 
+    <div class="actions">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymemodal">
+        Nuevo desafío
+      </button>
+    </div>
+      <!-- Modal -->
+  <div class="modal fade" id="paymemodal" tabindex="-1" role="dialog" aria-labelledby="paymemodalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymemodalLabel">Comprar suscripción</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4>Suscripción por un año</h4>
+          <p>Para continuar y crear tu desafío debes adquirir una suscripción a la plataforma por $15.00 USD.</p>
+          <p>Acceso a todos los desafios de la plataforma.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <%= link_to('Suscribirse', challenge_pasar_a_new_path,:class => 'btn btn-success btn-block') %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% elsif current_user.suscription == true %>
+    <div class="actions">
+    <%= link_to('Nuevo desafío', challenge_pasar_a_new_path,:class => 'btn btn-primary') %>
+    </div>
+  <% end -%>
   </div>
 </section>
-
 <section class="dashboard">
   <section class="challenge">
     <% if @challenge.any? %>
