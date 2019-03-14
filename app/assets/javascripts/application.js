@@ -24,5 +24,5 @@ $(document).ready(function() {
     setTimeout(function() {
         $(".alert").alert('close');
         $(".notice").alert('close');
-    }, 2000).fadeOut("slow");
+    }, 2000);
   });
