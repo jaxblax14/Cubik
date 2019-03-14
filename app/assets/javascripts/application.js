@@ -24,5 +24,6 @@ $(document).ready(function() {
     setTimeout(function() {
         $(".alert").alert('close');
         $(".notice").alert('close');
+        $(".info").alert('close');
     }, 2000);
   });

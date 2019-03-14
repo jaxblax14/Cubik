@@ -19,18 +19,20 @@
   <section class="col-xs-12 col-md-8 col-lg-9 ">
     <script scr="dist/js/shepherd.esm.js"></script>
   
-          <h1 id="welcome" class="text-center">Introducción a blockly</h1>
-        <div class="row justify-content-between">
+      <h1 id="welcome" class="text-center">Introducción a blockly</h1>
+      <div class="row justify-content-between">
         <div class="actions">
         <button class="btn btn-primary" id="btn-show" onclick="showCode()">Mostrar codigo.</button>
         <button class="btn btn-primary" id="btn-run" onclick="runCode()">Ejecutar codigo.</button>
         <button type="button" class="btn btn-primary"  id="btn-descargar"data-toggle="modal" data-target="#exampleModalLong">
         Descargar Codigo</button>
         </div>
-          <%=link_to  'Omitir Tutorial', wizzar_blockly_tutorial_true_path, :class => 'btn btn-secondary'%>
-        </div>
-      
+          <div style="margin-right: 30px ">
+            <%=link_to  'Omitir Tutorial', wizzar_blockly_tutorial_true_path, :class => 'btn btn-secondary'%>
+          </div>
+      </div>
     
+  
 
       <div id="blocklyArea"></div>
       <div id="blocklyDiv" style="position: absolute"></div>
@@ -40,7 +42,7 @@
           height: 70vh;
         }
       </style>
-     <xml id="toolbox" style="display: none">
+    <xml id="toolbox" style="display: none">
        <block type="math_number">
          <field name="NUM">3</field>
        </block>
@@ -50,7 +52,7 @@
        <block type="math_number">
          <field name="NUM">8</field>
        </block>
-     </xml>
+    </xml>
     <xml id="startBlocks" style="display: none">
      <block type="controls_if" inline="false" x="20" y="20">
        <mutation else="1"></mutation>

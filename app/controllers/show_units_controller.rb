@@ -57,7 +57,7 @@ class ShowUnitsController < ApplicationController
      @project.project_state_id = 3
      @project.boards.update(project_id: nil, users_id: nil)
     if @project.save
-      flash[:notice] = "Tu projecto a finalizado correctamente"
+      flash[:notice] = 'Tu desafio  fue  finalizado correctamente'
       redirect_to(dashboard_index_path)
     end
   end
