@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 					redirect_to challenge_index_path
 				end
 			elsif current_user.roles.where(id:2).any?
-				if controller_name =="challenge" 
+				if controller_name =="" 
 					flash[:alert] = "No tienes autorización para entrar en esa sección"
 					redirect_to dashboard_index_path
 				end	

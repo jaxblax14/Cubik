@@ -2,6 +2,8 @@
 <div class="col-xs-12 col-lg-6 offset-lg-3 text-center">
   <h1>Biblioteca de Desafíos</h1>
   <p>En la biblioteca de desafíos podrás ver todos los desafíos disponibles a desarrollar. Configura un nuevo desafío y actívalo para comenzar a trabajar.</p>
+  <%= link_to('Editor de desafíos', challenge_index_path,:class => 'btn btn-primary') %>
+  <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>
 </div>
 </section>
 
@@ -9,7 +11,7 @@
   <h5 class="challenge-title"><i class="fa fa-grip-horizontal"></i> Biblioteca de desafíos</h5>
   <div class="row">
     <% @challenges.where(is_published: true,is_public: true).each do |challenge| %>
-      <div class="col-xs-12 col-lg-6 col-xl-4">
+    <div class="col-xs-12 col-lg-6 col-xl-4">
       <%= link_to challenge_intro_intro_path(challenge) do %>
           <div class="card" id="card">
             <div class="card-body">
@@ -100,6 +102,3 @@
   <% end -%>
 <% end -%>
 <br>
-<section class="tutorial">
-  <%=link_to  'Ver tutorial sobre Blocky.', wizzar_blockly_tutorial_path, :class => 'btn btn-primary' %>
-</section>
