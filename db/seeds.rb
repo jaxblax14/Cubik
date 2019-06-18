@@ -34,6 +34,10 @@ board_model=BoardModel.create(name: 'Básico')
 
 Board.create([
 
-              {code_board:'CD-01',board_model: board_model}
+              {code_board:'CD-01',board_model: board_model},
+              {code_board:'CD-02',board_model: board_model},
+              {code_board:'CD-03',board_model: board_model},
+              {code_board:'CD-04',board_model: board_model},
+              {code_board:'CD-05',board_model: board_model}
 ])
 
